@@ -1,0 +1,78 @@
+.form {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 30px 50px;
+  background: #ecfbff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form button {
+  cursor: pointer;
+  background-color: #2c99ff;
+  border: 1px solid #2c99ff;
+  color: #fff;
+  min-width: 100px;
+  padding-bottom: 6px;
+  transition: .1s ease-in-out background;
+}
+
+.form button:hover {
+  background-color: #3f92e0;
+  border: 1px solid #3f92e0;
+}
+
+.form input {
+  border: 1px solid var(--border-color);
+}
+
+.form-welcome {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+.form-top {
+  display: flex;
+  margin: 0 -5px;
+}
+
+.form-top > * {
+  margin: 0 5px;
+}
+
+.form-top input {
+  width: 250px;
+  transition: .1s ease-in-out border;
+}
+
+.form-top input:focus {
+  border: 1px solid #b0b0b0;
+}
+
+.form-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-bottom span {
+  font-size: 1.1rem;
+  margin: 20px 0;
+  color: #8f8f8f;
+}
+
+.form-roomInfo {
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}

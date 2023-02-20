@@ -1,0 +1,21 @@
+:root {
+  --border-color: #e0e0e0;
+}
+
+body {
+  background-color: #d8f7ff;
+  color: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 15px;
+}
+
+input, button {
+  outline: none;
+  border-radius: 5px;
+  padding: 3px 10px;
+  font-family: inherit;
+  font-size: 1.1em;
+}
