@@ -1,7 +1,5 @@
-const redirectToCreateUser = () => {
-  window.location.replace(`/new-user`);
-};
+import { Link } from "react-router-dom";
 
 export const CreateMyRoom = () => {
-  return <button onClick={redirectToCreateUser}>Create New Room</button>;
+  return <Link to="/new-user">Create New Room</Link>;
 };

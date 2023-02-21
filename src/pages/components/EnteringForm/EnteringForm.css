@@ -1,4 +1,5 @@
 .form {
+  position: relative;
   border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 30px 50px;
@@ -24,10 +25,6 @@
   border: 1px solid #3f92e0;
 }
 
-.form input {
-  border: 1px solid var(--border-color);
-}
-
 .form-welcome {
   width: 100%;
   text-align: center;
@@ -45,15 +42,6 @@
 
 .form-top > * {
   margin: 0 5px;
-}
-
-.form-top input {
-  width: 250px;
-  transition: 0.1s ease-in-out border;
-}
-
-.form-top input:focus {
-  border: 1px solid #b0b0b0;
 }
 
 .form-bottom {

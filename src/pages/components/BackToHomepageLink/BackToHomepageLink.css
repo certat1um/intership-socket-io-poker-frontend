@@ -1,0 +1,12 @@
+.backToHomepageLink {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  cursor: pointer;
+  padding: 0px 5px;
+  font-size: 1.7em;
+  font-weight: 700;
+  color: #00000090;
+  text-decoration: none;
+  display: block;
+}

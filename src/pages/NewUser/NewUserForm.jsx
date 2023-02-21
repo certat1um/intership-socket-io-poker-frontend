@@ -1,5 +1,6 @@
-import "./NewUserForm.css";
+import "../components/EnteringForm/EnteringForm.css";
 import { useRef } from "react";
+import { BackToHomepageLink } from "../components/BackToHomepageLink/BackToHomepageLink";
 
 export const NewUserForm = () => {
   const inputRef = useRef();
@@ -23,10 +24,11 @@ export const NewUserForm = () => {
   return (
     <>
       <div className="form">
+        <BackToHomepageLink />
         <div className="form-welcome">
           <span>Type Your Username</span>
         </div>
-        <div className="form-inner">
+        <div className="form-top">
           <input
             ref={inputRef}
             type="text"
