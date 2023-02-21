@@ -1,0 +1,34 @@
+.table-head .table-col,
+.table-body .table-col {
+  flex: 1 1 100%;
+  text-align: center;
+}
+
+.table-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-head .table-row {
+  padding: 10px 0;
+}
+
+.table-body .table-row {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table-head {
+  font-size: 1.05em;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.table-card {
+  display: inline;
+  padding: 8px 10px;
+  font-size: 1.1em;
+  font-weight: 600;
+}

@@ -1,5 +1,5 @@
 :root {
-  --border-color: #e0e0e0;
+  --border-color: #0000001f;
 }
 
 body {
@@ -12,10 +12,17 @@ body {
   font-size: 15px;
 }
 
-input, button {
+input,
+button {
   outline: none;
   border-radius: 5px;
-  padding: 3px 10px;
+  padding: 5px 13px;
+  padding-bottom: 7px;
   font-family: inherit;
   font-size: 1.1em;
+  border: 1px solid var(--border-color);
+}
+
+button {
+  cursor: pointer;
 }

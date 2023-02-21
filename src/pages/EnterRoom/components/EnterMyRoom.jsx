@@ -1,9 +1,9 @@
 const enterExternalRoom = () => {
-  const myRoomID = localStorage.getItem('myRoomID');
+  const myRoomID = localStorage.getItem("myRoomID");
   window.location.replace(`/room/${myRoomID}`);
-  
-    // io.emit('joinExternalRoom') we get roomID
-    // return ???
+
+  // io.emit('joinExternalRoom') we get roomID
+  // return ???
 };
 
 export const EnterMyRoom = (props) => {

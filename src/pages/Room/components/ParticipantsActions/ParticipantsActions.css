@@ -1,0 +1,33 @@
+.room-participants-actions {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  padding-top: 60px;
+}
+
+.results {
+  position: absolute;
+  font-size: 1.1em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  top: 0px;
+}
+
+.room-participants-actions button {
+  font-size: 0.95em;
+  transition: 0.1s ease-in-out background, 0.1s ease-in-out border;
+}
+
+.room-participants-actions button:hover {
+  background-color: var(--border-color);
+}
+
+.show-result-btn {
+  background-color: #0000008f;
+  color: #fff;
+}
+
+button.show-result-btn:hover {
+  background-color: #585858;
+}

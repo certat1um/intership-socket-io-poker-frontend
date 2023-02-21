@@ -1,24 +1,24 @@
-import './NewUser.css'
-import { useRef } from 'react';
+import "./NewUserForm.css";
+import { useRef } from "react";
 
-export const NewUser = () => {
+export const NewUserForm = () => {
   const inputRef = useRef();
-  
+
   const enterMyRoom = () => {
     const username = inputRef.current.value.trim();
 
-    if(!username) {
+    if (!username) {
       return;
     }
-    
+
     // io.emit('joinMyRoom') we get roomID
     // const myRoomID =
 
-    localStorage.setItem('username', username);
-    localStorage.setItem('myRoomID', '57835784');
+    localStorage.setItem("username", username);
+    localStorage.setItem("myRoomID", "57835784");
 
     window.location.replace(`/room/${123}`);
-  }
+  };
 
   return (
     <>
@@ -27,10 +27,15 @@ export const NewUser = () => {
           <span>Type Your Username</span>
         </div>
         <div className="form-inner">
-          <input  ref={inputRef} type="text" placeholder='Your Username...' name='username'/>
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder="Your Username..."
+            name="username"
+          />
           <button onClick={enterMyRoom}>Enter</button>
         </div>
       </div>
     </>
   );
-}
+};

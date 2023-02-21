@@ -1,18 +1,22 @@
-import './App.css';
-import { EnterRoom } from './pages/EnterRoom/EnterRoom';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { NewUser } from './pages/NewUser/NewUser';
+import "./App.css";
+import { EnterRoomForm } from "./pages/EnterRoom/EnterRoomForm";
+import { Room } from "./pages/Room/Room";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { NewUserForm } from "./pages/NewUser/NewUserForm";
+
+//localStorage.setItem('username', 'test')
+//localStorage.setItem('myRoomID', '4324523')
 
 export const App = () => {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<EnterRoom/>} />
-          <Route path='/new-user' element={<NewUser />} />
-          <Route path='/room/:id' element={<h1>Some room</h1>} />
+          <Route path="/" element={<EnterRoomForm />} />
+          <Route path="/new-user" element={<NewUserForm />} />
+          <Route path="/room/:id" element={<Room />} />
         </Routes>
       </BrowserRouter>
     </>
   );
-}
+};

@@ -3,7 +3,5 @@ const redirectToCreateUser = () => {
 };
 
 export const CreateMyRoom = () => {
-  return (
-    <button onClick={redirectToCreateUser}>Create New Room</button>
-  );
+  return <button onClick={redirectToCreateUser}>Create New Room</button>;
 };

@@ -1,13 +1,12 @@
 ### Main tasks:
- - [] Make UI (EnterRoom page, Login page, Room page with list of cards)
- - [] Implement SCSS
- - [] Refactor Filestructure
+ - [x] Make UI (EnterRoom page, Login page, Room page with list of cards)
+ - [x] Refactor Filestructure
  - [] Start developing Server
 
 ### Make UI:
  - [x] EnterRoom page
  - [x] Login page
- - [] Room page with list of cards
+ - [x] Room page with list of cards
  
 ### Not authorizated:
  - Create My New Room.
@@ -35,4 +34,6 @@
  - 
 
 ### To refactor:
+ - [] Use States
+ - [] Use BrowserRouter to redirect
  - [] 

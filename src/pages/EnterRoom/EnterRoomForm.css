@@ -16,7 +16,7 @@
   color: #fff;
   min-width: 100px;
   padding-bottom: 6px;
-  transition: .1s ease-in-out background;
+  transition: 0.1s ease-in-out background;
 }
 
 .form button:hover {
@@ -49,7 +49,7 @@
 
 .form-top input {
   width: 250px;
-  transition: .1s ease-in-out border;
+  transition: 0.1s ease-in-out border;
 }
 
 .form-top input:focus {
