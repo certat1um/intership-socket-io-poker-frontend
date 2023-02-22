@@ -3,12 +3,15 @@ import { useState } from 'react';
 import { BackToHomepageLink } from '../../components/BackToHomepageLink/BackToHomepageLink';
 import { enterExternalRoom } from '../../helpers/enterExternalRoom';
 import { enterMyRoom } from '../../helpers/enterMyRoom';
+import io from 'socket.io-client';
+
+const socket = io();
 
 export const NewUserForm = () => {
   const [value, setValue] = useState('');
 
   const handleRoom = () => {
-    const username = value;
+    const username = value.trim();
     if (!username) {
       return;
     }
@@ -35,7 +38,7 @@ export const NewUserForm = () => {
         <div className="form-top">
           <input
             value={value}
-            onChange={(e) => setValue(e.target.value.trim())}
+            onChange={(e) => setValue(e.target.value)}
             type="text"
             placeholder="Your Username..."
             name="username"

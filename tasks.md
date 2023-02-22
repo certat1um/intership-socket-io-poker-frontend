@@ -39,6 +39,4 @@
  - 
 
 ### To refactor:
- - [x] Use States to inputs
- - [x] Figure out what components to render in due to data in LocalStorage
- - [x] Move components and figure more out about filestructure
+ - [] how to use routes

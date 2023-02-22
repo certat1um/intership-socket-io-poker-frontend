@@ -3,6 +3,9 @@ import { CardsList } from './components/CardsList/CardsList';
 import { ParticipantsActions } from './components/ParticipantsActions/ParticipantsActions';
 import { ParticipantsTable } from './components/ParticipantsTable/ParticipantsTable';
 import { BackToHomepageLink } from '../../components/BackToHomepageLink/BackToHomepageLink';
+import io from 'socket.io-client';
+
+const socket = io();
 
 export const Room = () => {
   return (

@@ -2,6 +2,9 @@ import '../../public/Form.css';
 import { useState } from 'react';
 import { enterExternalRoom } from '../../helpers/enterExternalRoom';
 import { enterMyRoom } from '../../helpers/enterMyRoom';
+import io from 'socket.io-client';
+
+const socket = io();
 
 export const EnterRoomForm = () => {
   localStorage.setItem('externalRoomID', '');
@@ -10,7 +13,7 @@ export const EnterRoomForm = () => {
   const [value, setValue] = useState('');
 
   const handleExternalRoom = () => {
-    const externalRoomID = value;
+    const externalRoomID = value.trim();
     if (!externalRoomID) {
       return;
     }
@@ -36,7 +39,7 @@ export const EnterRoomForm = () => {
       <div className="form-top">
         <input
           value={value}
-          onChange={(e) => setValue(e.target.value.trim())}
+          onChange={(e) => setValue(e.target.value)}
           type="text"
           placeholder="Room number..."
           name="roomID"
