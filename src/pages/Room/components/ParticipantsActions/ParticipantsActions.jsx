@@ -1,4 +1,4 @@
-import "./ParticipantsActions.css";
+import './ParticipantsActions.css';
 
 export const ParticipantsActions = () => {
   return (

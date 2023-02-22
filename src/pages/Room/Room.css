@@ -1,4 +1,5 @@
 .room {
+  position: relative;
   background: #ecfbff;
   border: 1px solid var(--border-color);
   border-radius: 10px;

@@ -10,21 +10,6 @@
   align-items: center;
 }
 
-.form button {
-  cursor: pointer;
-  background-color: #2c99ff;
-  border: 1px solid #2c99ff;
-  color: #fff;
-  min-width: 100px;
-  padding-bottom: 6px;
-  transition: 0.1s ease-in-out background;
-}
-
-.form button:hover {
-  background-color: #3f92e0;
-  border: 1px solid #3f92e0;
-}
-
 .form-welcome {
   width: 100%;
   text-align: center;

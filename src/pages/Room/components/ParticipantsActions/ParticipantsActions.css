@@ -16,11 +16,6 @@
 
 .room-participants-actions button {
   font-size: 0.95em;
-  transition: 0.1s ease-in-out background, 0.1s ease-in-out border;
-}
-
-.room-participants-actions button:hover {
-  background-color: var(--border-color);
 }
 
 .show-result-btn {

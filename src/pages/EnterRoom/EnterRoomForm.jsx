@@ -1,55 +1,63 @@
-import "../components/EnteringForm/EnteringForm.css";
-import { WelcomeExistingUser } from "./components/WelcomeUser/WelcomeExistingUser";
-import { WelcomeNewUser } from "./components/WelcomeUser/WelcomeNewUser";
-import { EnterMyRoom } from "./components/EnterMyRoom";
-import { useRef } from "react";
-import { Link } from "react-router-dom";
+import '../../public/Form.css';
+import { useState } from 'react';
+import { enterExternalRoom } from '../../helpers/enterExternalRoom';
+import { enterMyRoom } from '../../helpers/enterMyRoom';
 
 export const EnterRoomForm = () => {
-  const username = localStorage.getItem("username");
-  const myRoomID = localStorage.getItem("myRoomID");
-  const inputRef = useRef();
+  localStorage.setItem('externalRoomID', '');
+  const username = localStorage.getItem('username');
+  const myRoomID = localStorage.getItem('myRoomID');
+  const [value, setValue] = useState('');
 
-  const joinExternalRoom = () => {
-    const roomID = inputRef.current.value.trim();
-
-    if (!roomID) {
+  const handleExternalRoom = () => {
+    const externalRoomID = value;
+    if (!externalRoomID) {
       return;
     }
+
+    localStorage.setItem('externalRoomID', externalRoomID);
+
     if (!username) {
-      return window.location.replace("/new-user");
+      return window.location.replace(`/new-user/${'external'}`);
     }
 
-    // socket emit implementation
-
-    window.location.replace(`/room/${roomID}`);
+    enterExternalRoom(externalRoomID);
   };
 
   return (
     <div className="form">
       <div className="form-welcome">
         {username === null ? (
-          <WelcomeNewUser />
+          <span>Welcome to Scrum Poker!</span>
         ) : (
-          <WelcomeExistingUser username={username} />
+          <span>Welcome to Scrum Poker, {username}!</span>
         )}
       </div>
       <div className="form-top">
         <input
-          required
-          ref={inputRef}
+          value={value}
+          onChange={(e) => setValue(e.target.value.trim())}
           type="text"
           placeholder="Room number..."
           name="roomID"
         />
-        <button onClick={joinExternalRoom}>Enter</button>
+        <button onClick={handleExternalRoom} className="btn">
+          Enter
+        </button>
       </div>
       <div className="form-bottom">
         <span>or</span>
         {myRoomID === null ? (
-          <Link to="/new-user">Create New Room</Link>
+          <button onClick={enterMyRoom} className="btn blue-btn">
+            Create New Room
+          </button>
         ) : (
-          <EnterMyRoom roomID={myRoomID} />
+          <>
+            <div className="form-roomInfo">Your Room ID: {myRoomID}</div>
+            <button onClick={enterMyRoom} className="btn blue-btn">
+              Enter My Room
+            </button>
+          </>
         )}
       </div>
     </div>

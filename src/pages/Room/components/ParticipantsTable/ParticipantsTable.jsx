@@ -1,4 +1,4 @@
-import "./ParticipantsTable.css";
+import './ParticipantsTable.css';
 
 export const ParticipantsTable = () => {
   return (

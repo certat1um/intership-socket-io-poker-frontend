@@ -1,24 +1,28 @@
-import "../components/EnteringForm/EnteringForm.css";
-import { useRef } from "react";
-import { BackToHomepageLink } from "../components/BackToHomepageLink/BackToHomepageLink";
+import '../../public/Form.css';
+import { useState } from 'react';
+import { BackToHomepageLink } from '../../components/BackToHomepageLink/BackToHomepageLink';
+import { enterExternalRoom } from '../../helpers/enterExternalRoom';
+import { enterMyRoom } from '../../helpers/enterMyRoom';
 
 export const NewUserForm = () => {
-  const inputRef = useRef();
+  const [value, setValue] = useState('');
 
-  const enterMyRoom = () => {
-    const username = inputRef.current.value.trim();
-
+  const handleRoom = () => {
+    const username = value;
     if (!username) {
       return;
     }
+    localStorage.setItem('username', username);
 
-    // io.emit('joinMyRoom') we get roomID
-    // const myRoomID =
+    const currentURL = window.location.href;
+    const indexOfLastSlash = currentURL.lastIndexOf('/');
+    const redirectType = currentURL.slice(indexOfLastSlash + 1);
 
-    localStorage.setItem("username", username);
-    localStorage.setItem("myRoomID", "57835784");
-
-    window.location.replace(`/room/${123}`);
+    if (redirectType === 'internal') {
+      enterMyRoom();
+    } else if (redirectType === 'external') {
+      enterExternalRoom();
+    }
   };
 
   return (
@@ -30,12 +34,13 @@ export const NewUserForm = () => {
         </div>
         <div className="form-top">
           <input
-            ref={inputRef}
+            value={value}
+            onChange={(e) => setValue(e.target.value.trim())}
             type="text"
             placeholder="Your Username..."
             name="username"
           />
-          <button onClick={enterMyRoom}>Enter</button>
+          <button onClick={handleRoom}>Enter</button>
         </div>
       </div>
     </>

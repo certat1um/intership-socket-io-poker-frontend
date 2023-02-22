@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import "./BackToHomepageLink.css";
+import { Link } from 'react-router-dom';
+import './BackToHomepageLink.css';
 
 export const BackToHomepageLink = () => {
-  const text = "<";
+  const text = '<';
   return (
     <Link to="/" className="backToHomepageLink">
       {text}

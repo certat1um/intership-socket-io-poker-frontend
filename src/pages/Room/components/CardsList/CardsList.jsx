@@ -1,4 +1,4 @@
-import "./CardsList.css";
+import './CardsList.css';
 
 export const CardsList = () => {
   return (
