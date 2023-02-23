@@ -10,7 +10,7 @@ export const NewUserForm = () => {
   const [value, setValue] = useState('');
   const navigate = useNavigate();
 
-  const handleRoom = () => {
+  const handleRoom = async () => {
     const username = value.trim();
     if (!username) {
       return;
@@ -22,9 +22,11 @@ export const NewUserForm = () => {
     if (redirectType === 'thisUserRoom') {
       // io.emit(joinMyRoom)
       // get myRoomID from server
-      localStorage.setItem('myRoomID', '54362378');
+      const res = await fetch('http://localhost:3000/room/generateID');
+      const myRoomID = await res.text();
 
-      const myRoomID = localStorage.getItem('myRoomID');
+      localStorage.setItem('myRoomID', myRoomID);
+
       return navigate(`/room/${myRoomID}`);
     } else if (redirectType === 'anotherUserRoom') {
       // io.emit(joinExternalRoom)

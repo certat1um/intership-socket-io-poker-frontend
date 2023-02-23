@@ -1,13 +1,12 @@
 ### Main tasks:
- - [x] makes UI (EnterRoom page, Login page, Room page with list of cards)
- - [x] Refactor Filestructure
- - [x] Start developing Server
+ - [x] Realise randomRoomID server communication
+ - [x] Implement socket connection with server
  
 ### To Ask:
  - 
 
 ### To refactor:
- - [x] how to use routes/redirects
+ - 
 
 
 -------------------------------------------

@@ -14,13 +14,13 @@ export const ParticipantsTable = () => {
           <div className="table-row">
             <div className="table-col">John</div>
             <div className="table-col">
-              <div className="room-card table-card">5</div>
+              <div className="room-card table-card">2</div>
             </div>
           </div>
           <div className="table-row">
             <div className="table-col">Doe</div>
             <div className="table-col">
-              <div className="room-card table-card">5</div>
+              <div className="room-card table-card">13</div>
             </div>
           </div>
         </div>
