@@ -3,6 +3,16 @@
  - [x] Refactor Filestructure
  - [x] Start developing Server
  
+### To Ask:
+ - 
+
+### To refactor:
+ - [x] how to use routes/redirects
+
+
+-------------------------------------------
+
+
 ### Not authorizated:
  - Create My New Room.
     Client makes GET req to /new-user.
@@ -34,9 +44,3 @@
 
  - Connect to external room.
     Client makes GET req to connect to another room
-
-### To Ask:
- - 
-
-### To refactor:
- - [] how to use routes

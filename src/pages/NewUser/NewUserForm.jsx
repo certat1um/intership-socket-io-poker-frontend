@@ -1,37 +1,45 @@
 import '../../public/Form.css';
 import { useState } from 'react';
-import { BackToHomepageLink } from '../../components/BackToHomepageLink/BackToHomepageLink';
-import { enterExternalRoom } from '../../helpers/enterExternalRoom';
-import { enterMyRoom } from '../../helpers/enterMyRoom';
+import { BackToHomeLink } from '../../components/BackToHomeLink/BackToHomeLink';
 import io from 'socket.io-client';
+import { useNavigate } from 'react-router-dom';
 
 const socket = io();
 
 export const NewUserForm = () => {
   const [value, setValue] = useState('');
+  const navigate = useNavigate();
 
   const handleRoom = () => {
     const username = value.trim();
     if (!username) {
       return;
     }
+
+    const redirectType = localStorage.getItem('redirectType');
     localStorage.setItem('username', username);
 
-    const currentURL = window.location.href;
-    const indexOfLastSlash = currentURL.lastIndexOf('/');
-    const redirectType = currentURL.slice(indexOfLastSlash + 1);
+    if (redirectType === 'thisUserRoom') {
+      // io.emit(joinMyRoom)
+      // get myRoomID from server
+      localStorage.setItem('myRoomID', '54362378');
 
-    if (redirectType === 'internal') {
-      enterMyRoom();
-    } else if (redirectType === 'external') {
-      enterExternalRoom();
+      const myRoomID = localStorage.getItem('myRoomID');
+      return navigate(`/room/${myRoomID}`);
+    } else if (redirectType === 'anotherUserRoom') {
+      // io.emit(joinExternalRoom)
+
+      const externalRoomID = localStorage.getItem('externalRoomID');
+      return navigate(`/room/${externalRoomID}`);
+    } else {
+      return navigate('/');
     }
   };
 
   return (
     <>
       <div className="form">
-        <BackToHomepageLink />
+        <BackToHomeLink />
         <div className="form-welcome">
           <span>Type Your Username</span>
         </div>

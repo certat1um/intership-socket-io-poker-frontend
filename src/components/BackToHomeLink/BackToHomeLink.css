@@ -2,11 +2,11 @@
   position: absolute;
   top: 10px;
   left: 15px;
-  cursor: pointer;
-  padding: 0px 5px;
+  padding: 0px 10px;
+  padding-bottom: 6px;
+  line-height: 20px;
+  min-width: auto;
   font-size: 1.7em;
   font-weight: 700;
   color: #00000090;
-  text-decoration: none;
-  display: block;
 }

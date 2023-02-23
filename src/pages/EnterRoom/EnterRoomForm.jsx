@@ -1,16 +1,18 @@
 import '../../public/Form.css';
 import { useState } from 'react';
-import { enterExternalRoom } from '../../helpers/enterExternalRoom';
-import { enterMyRoom } from '../../helpers/enterMyRoom';
 import io from 'socket.io-client';
+import { useNavigate } from 'react-router-dom';
 
 const socket = io();
 
 export const EnterRoomForm = () => {
   localStorage.setItem('externalRoomID', '');
+  localStorage.setItem('redirectType', '');
+
   const username = localStorage.getItem('username');
   const myRoomID = localStorage.getItem('myRoomID');
   const [value, setValue] = useState('');
+  const navigate = useNavigate();
 
   const handleExternalRoom = () => {
     const externalRoomID = value.trim();
@@ -21,10 +23,25 @@ export const EnterRoomForm = () => {
     localStorage.setItem('externalRoomID', externalRoomID);
 
     if (!username) {
-      return window.location.replace(`/new-user/${'external'}`);
+      localStorage.setItem('redirectType', 'anotherUserRoom');
+      return navigate(`/new-user/`);
+    } else {
+      // io.emit(joinExternalRoom)
+      return navigate(`/room/${externalRoomID}`);
     }
+  };
 
-    enterExternalRoom(externalRoomID);
+  const handleMyRoom = () => {
+    const username = localStorage.getItem('username');
+    if (!username) {
+      localStorage.setItem('redirectType', 'thisUserRoom');
+      return navigate(`/new-user/`);
+    }
+  };
+
+  const enterMyRoom = () => {
+    // io.emit(joinMyRoom)
+    return navigate(`/room/${myRoomID}`);
   };
 
   return (
@@ -51,7 +68,7 @@ export const EnterRoomForm = () => {
       <div className="form-bottom">
         <span>or</span>
         {myRoomID === null ? (
-          <button onClick={enterMyRoom} className="btn blue-btn">
+          <button onClick={handleMyRoom} className="btn blue-btn">
             Create New Room
           </button>
         ) : (

@@ -2,18 +2,21 @@ import './Room.css';
 import { CardsList } from './components/CardsList/CardsList';
 import { ParticipantsActions } from './components/ParticipantsActions/ParticipantsActions';
 import { ParticipantsTable } from './components/ParticipantsTable/ParticipantsTable';
-import { BackToHomepageLink } from '../../components/BackToHomepageLink/BackToHomepageLink';
+import { BackToHomeLink } from '../../components/BackToHomeLink/BackToHomeLink';
 import io from 'socket.io-client';
+import { useParams } from 'react-router-dom';
 
 const socket = io();
 
 export const Room = () => {
+  const params = useParams();
+
   return (
     <>
       <div className="room">
-        <BackToHomepageLink />
+        <BackToHomeLink />
         <div className="room-info">
-          <span>Room: 12 34 45 56</span>
+          <span>Room: {params.id}</span>
         </div>
         <CardsList />
 
