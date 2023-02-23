@@ -1,10 +1,7 @@
 import '../../public/Form.css';
 import { useState } from 'react';
 import { BackToHomeLink } from '../../components/BackToHomeLink/BackToHomeLink';
-import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
-
-const socket = io();
 
 export const NewUserForm = () => {
   const [value, setValue] = useState('');

@@ -20,8 +20,8 @@
 }
 
 .room-cardlist .room-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0px 4px 0px var(--border-color);
+  transform: translateY(-2px);
+  box-shadow: 0px 2px 0px var(--border-color);
 }
 
 .room-cardlist .room-card.active {

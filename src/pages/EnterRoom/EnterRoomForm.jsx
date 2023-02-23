@@ -1,9 +1,6 @@
 import '../../public/Form.css';
 import { useState } from 'react';
-import { io } from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
-
-const socket = io(`http://localhost:3001`);
 
 export const EnterRoomForm = () => {
   localStorage.setItem('externalRoomID', '');

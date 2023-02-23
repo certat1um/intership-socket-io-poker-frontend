@@ -6,7 +6,8 @@
  - 
 
 ### To refactor:
- - 
+ - [x] useState() instead of makeActive.js
+ - [] Connect socket to room
 
 
 -------------------------------------------
