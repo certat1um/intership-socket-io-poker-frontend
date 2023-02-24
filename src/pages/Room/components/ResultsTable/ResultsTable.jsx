@@ -1,6 +1,6 @@
-import './ParticipantsTable.css';
+import './ResultsTable.css';
 
-export const ParticipantsTable = () => {
+export const ResultsTable = () => {
   return (
     <>
       <div className="room-participants-table">

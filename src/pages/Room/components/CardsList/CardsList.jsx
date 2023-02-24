@@ -1,26 +1,31 @@
 import './CardsList.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const CardsList = () => {
-  const cards = [
-    {
-      id: 1,
-      text: 1,
-    },
-    {
-      id: 2,
-      text: 2,
-    },
-    {
-      id: 3,
-      text: 3,
-    },
-  ];
+  const [cardItems, setCardItems] = useState([]);
+
+  async function getAllCards() {
+    const res = await fetch('http://localhost:8080/api/cards');
+
+    return res.json();
+  }
+
+  useEffect(() => {
+    getAllCards()
+      .then((res) => {
+        setCardItems(res);
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  console.log(...cardItems);
 
   const [appState, changleState] = useState({
     activeObject: null,
-    objects: cards,
+    objects: [],
   });
+
+  console.log(appState.objects);
 
   const toggleActive = (index) => {
     changleState({ ...appState, activeObject: appState.objects[index] });

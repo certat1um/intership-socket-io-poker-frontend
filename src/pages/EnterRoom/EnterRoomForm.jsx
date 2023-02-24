@@ -23,7 +23,6 @@ export const EnterRoomForm = () => {
       localStorage.setItem('redirectType', 'anotherUserRoom');
       return navigate(`/new-user/`);
     } else {
-      // io.emit(joinExternalRoom)
       return navigate(`/room/${externalRoomID}`);
     }
   };
@@ -37,8 +36,6 @@ export const EnterRoomForm = () => {
   };
 
   const enterMyRoom = () => {
-    // io.emit(joinMyRoom)
-
     return navigate(`/room/${myRoomID}`);
   };
 
