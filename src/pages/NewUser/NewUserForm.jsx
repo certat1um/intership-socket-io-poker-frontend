@@ -4,35 +4,50 @@ import { BackToHomeLink } from '../../components/BackToHomeLink/BackToHomeLink';
 import { useNavigate } from 'react-router-dom';
 
 export const NewUserForm = () => {
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
+  const redirectType = localStorage.getItem('redirectType');
 
-  const createMyRoom = async () => {
+  const createMyRoom = async (userID) => {
     const res = await fetch('http://localhost:8080/api/new-room', {
       method: 'POST',
+      body: {
+        userID,
+      },
     });
     const { code } = await res.json();
-
     return code;
   };
 
+  const createUser = async (username) => {
+    const res = await fetch('http://localhost:8080/api/new-user', {
+      method: 'POST',
+      body: {
+        username,
+      },
+    });
+    const data = await res.json();
+    console.log(data);
+    //return data;
+  };
+
   const handleRoom = async () => {
-    const username = value.trim();
+    const username = inputValue.trim();
     if (!username) {
       return;
     }
-    localStorage.setItem('username', username);
-    const redirectType = localStorage.getItem('redirectType');
 
     if (redirectType === 'thisUserRoom') {
-      const myRoomID = await createMyRoom();
+      const userID = await createUser(username);
+      //const myRoomID = await createMyRoom(userID);
 
-      localStorage.setItem('myRoomID', myRoomID);
-      return navigate(`/room/${myRoomID}`);
+      //localStorage.setItem('userID', userID)
+      //localStorage.setItem('myRoomID', myRoomID);
+
+      //return navigate(`/room/${myRoomID}`);
     } else if (redirectType === 'anotherUserRoom') {
-      // io.emit(joinExternalRoom)
-
       const externalRoomID = localStorage.getItem('externalRoomID');
+
       return navigate(`/room/${externalRoomID}`);
     } else {
       return navigate('/');
@@ -48,8 +63,8 @@ export const NewUserForm = () => {
         </div>
         <div className="form-top">
           <input
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
             type="text"
             placeholder="Your Username..."
             name="username"

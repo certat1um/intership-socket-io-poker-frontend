@@ -1,5 +1,5 @@
 import '../../public/Form.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const EnterRoomForm = () => {
@@ -8,11 +8,23 @@ export const EnterRoomForm = () => {
 
   const username = localStorage.getItem('username');
   const myRoomID = localStorage.getItem('myRoomID');
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const userID = localStorage.getItem('userID');
+
+    if (!userID && !myRoomID) {
+      fetch(`http://localhost:3000/api/getUserRoom/${userID}`)
+        .then((roomID) => localStorage.setItem('myRoomID', roomID))
+        .catch((err) => console.log(err));
+    } else {
+      localStorage.setItem('myRoomID', null);
+    }
+  }, []);
+
   const handleExternalRoom = () => {
-    const externalRoomID = value.trim();
+    const externalRoomID = inputValue.trim();
     if (!externalRoomID) {
       return;
     }
@@ -50,8 +62,8 @@ export const EnterRoomForm = () => {
       </div>
       <div className="form-top">
         <input
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
           type="text"
           placeholder="Room number..."
           name="roomID"
@@ -62,7 +74,7 @@ export const EnterRoomForm = () => {
       </div>
       <div className="form-bottom">
         <span>or</span>
-        {myRoomID === null ? (
+        {myRoomID === 'null' ? (
           <button onClick={handleMyRoom} className="btn blue-btn">
             Create New Room
           </button>

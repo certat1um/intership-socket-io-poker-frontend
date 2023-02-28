@@ -2,37 +2,43 @@ import './CardsList.css';
 import { useEffect, useState } from 'react';
 
 export const CardsList = () => {
-  const [cardItems, setCardItems] = useState([]);
-
-  async function getAllCards() {
-    const res = await fetch('http://localhost:8080/api/cards');
-
-    return res.json();
-  }
-
-  useEffect(() => {
-    getAllCards()
-      .then((res) => {
-        setCardItems(res);
-      })
-      .catch((e) => console.log(e));
-  }, []);
-
-  console.log(...cardItems);
-
-  const [appState, changleState] = useState({
+  const [cardState, changeCardState] = useState({
     activeObject: null,
     objects: [],
   });
 
-  console.log(appState.objects);
+  // generate cards
+  useEffect(() => {
+    getAllCards()
+      .then((res) => {
+        changeCardState({
+          activeObject: null,
+          objects: res,
+        });
+      })
+      .catch((e) => console.log(e));
+  }, []);
+
+  // creating empty participant entity in database
+  useEffect(() => {
+    // make GET fetch if this user is in room
+
+    // send username, roomCode in fetch POST
+    console.log(1);
+  }, []);
+
+  const getAllCards = async () => {
+    const res = await fetch('http://localhost:8080/api/cards');
+
+    return res.json();
+  };
 
   const toggleActive = (index) => {
-    changleState({ ...appState, activeObject: appState.objects[index] });
+    changeCardState({ ...cardState, activeObject: cardState.objects[index] });
   };
 
   const toggleActiveStyles = (index) => {
-    if (appState.objects[index] === appState.activeObject) {
+    if (cardState.objects[index] === cardState.activeObject) {
       return 'active';
     } else {
       return '';
@@ -42,15 +48,15 @@ export const CardsList = () => {
   return (
     <>
       <div className="room-cardlist">
-        {appState.objects.map((elem, index) => (
+        {cardState.objects.map((elem, index) => (
           <div
-            key={index}
-            className={`room-card ${toggleActiveStyles(index)}`}
+            key={elem.id}
+            className={`room-card ${toggleActiveStyles(elem.id)}`}
             onClick={() => {
-              toggleActive(index);
+              toggleActive(elem.id);
             }}
           >
-            <span>{elem.text}</span>
+            <span>{elem.value}</span>
           </div>
         ))}
       </div>

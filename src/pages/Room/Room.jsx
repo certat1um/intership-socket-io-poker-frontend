@@ -8,26 +8,22 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 export const Room = () => {
-  const socket = io('http://localhost:8081');
+  //const socket = io('http://localhost:8081');
   const params = useParams();
   const roomCode = params.id;
   const username = localStorage.getItem('username');
-  const [points, usePoints] = useState('');
 
   useEffect(() => {
-    function handleJoinUserEvent() {
-      socket.emit('joinRoom', { roomCode, username });
-    }
+    fetch('http://localhost:8080/api/add-participant', {
+      method: 'POST',
+      body: {
+        username,
+        roomCode,
+      },
+    }).catch((err) => console.log(err));
 
-    handleJoinUserEvent();
+    //socket.emit('joinRoom', { roomCode, username });
   }, []);
-
-
-  //(function handleJoinUserEvent() {
-  //  socket.emit('joinRoom', { roomCode, username });
-  //})();
-
-  //function handleSetUserPoints(username, points) {}
 
   return (
     <>
@@ -36,12 +32,10 @@ export const Room = () => {
         <div className="room-info">
           <span>Room: {roomCode}</span>
         </div>
-
         <CardsList />
-
         <div className="room-participants">
           <ParticipantsActions />
-          <ResultsTable />
+          <ResultsTable roomCode={roomCode} />
         </div>
       </div>
     </>

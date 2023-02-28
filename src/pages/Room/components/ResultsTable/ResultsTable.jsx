@@ -1,6 +1,22 @@
+import { useEffect, useState } from 'react';
 import './ResultsTable.css';
 
-export const ResultsTable = () => {
+export const ResultsTable = (props) => {
+  const [resultsState, setResultsState] = useState([]);
+
+  async function getResults() {
+    const res = await fetch('http://localhost:8080/api/results');
+    const data = await res.json();
+
+    return data.filter((item) => item.room.code === props.roomCode);
+  }
+
+  useEffect(() => {
+    getResults()
+      .then((res) => setResultsState(res))
+      .catch((e) => console.log(e));
+  }, []);
+
   return (
     <>
       <div className="room-participants-table">
@@ -11,18 +27,16 @@ export const ResultsTable = () => {
           </div>
         </div>
         <div className="table-body">
-          <div className="table-row">
-            <div className="table-col">John</div>
-            <div className="table-col">
-              <div className="room-card table-card">-</div>
+          {resultsState.map((item, index) => (
+            <div className="table-row" key={index}>
+              <div className="table-col">{item.username}</div>
+              <div className="table-col">
+                <div className="room-card table-card">
+                  {item.activeCard.value}
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="table-row">
-            <div className="table-col">Doe</div>
-            <div className="table-col">
-              <div className="room-card table-card">-</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </>

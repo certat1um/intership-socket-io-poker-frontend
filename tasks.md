@@ -5,11 +5,27 @@
  
 
 ### Implement socket events & communication with DB
- - [] GetAllCards from client and render them in CardsList by useState
- - [] PointCard clickListener emits 'handlePointCardToServer'
+ - [x] getAllCards from server and render them in CardsList by useState
+ - [x] getResults from server and render it in ResultsTable by useState
+ - [] click event on card emits 'handlePointCardToServer'
  - [] Server listens to event 'handlePointCardToServer'
  - [] Client listens to event 'handlePointCardClient' and render Results table by useState
  - [] Client makes fetch UPDATE/POST request to change 'value' in 'participants' table
+
+
+### Creating new user
+ - [] Creating user via NewUserForm
+ - [] Getting user from fetch GET to render on front
+
+
+### Event by clicking the card
+ - [] POST/PUT fetch to server to update/create cardPoints in participant table
+
+
+### Event by entering the room
+ - [] fetch to server to verify if user exist in table
+ - [] if not - POST fetch to server to create a participant in table
+ - [] if yes - nothing
 
 
 ### (Фронтенд) Логіка роботи з картами:
@@ -20,13 +36,12 @@
 
 
 ### To Ask:
- - multiple renders of component
+ - 
 
 
 ### To refactor:
  - [] 
 
+
 ### To learn:
- - about basic hooks
- - about dynamic rendering
- - about listeners
+ - 
