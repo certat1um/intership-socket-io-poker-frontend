@@ -11,24 +11,26 @@ export const NewUserForm = () => {
   const createMyRoom = async (userID) => {
     const res = await fetch('http://localhost:8080/api/new-room', {
       method: 'POST',
-      body: {
-        userID,
+      headers: {
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ userID }),
     });
-    const { code } = await res.json();
-    return code;
+    //const { code: roomCode } = await res.json();
+    const roomID = await res.text();
+    return roomID;
   };
 
   const createUser = async (username) => {
     const res = await fetch('http://localhost:8080/api/new-user', {
       method: 'POST',
-      body: {
-        username,
+      headers: {
+        'Content-Type': 'application/json',
       },
+      body: JSON.stringify({ username }),
     });
-    const data = await res.json();
-    console.log(data);
-    //return data;
+    const { id: userID } = await res.json();
+    return userID;
   };
 
   const handleRoom = async () => {
@@ -39,14 +41,17 @@ export const NewUserForm = () => {
 
     if (redirectType === 'thisUserRoom') {
       const userID = await createUser(username);
-      //const myRoomID = await createMyRoom(userID);
+      const myRoomID = await createMyRoom(userID);
 
-      //localStorage.setItem('userID', userID)
-      //localStorage.setItem('myRoomID', myRoomID);
+      localStorage.setItem('userID', userID);
+      localStorage.setItem('myRoomID', myRoomID);
 
-      //return navigate(`/room/${myRoomID}`);
+      return navigate(`/room/${myRoomID}`);
     } else if (redirectType === 'anotherUserRoom') {
+      //const userID = await createUser(username);
       const externalRoomID = localStorage.getItem('externalRoomID');
+
+      //localStorage.setItem('userID', userID);
 
       return navigate(`/room/${externalRoomID}`);
     } else {
